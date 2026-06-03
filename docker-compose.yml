@@ -1,0 +1,37 @@
+services:
+  minio:
+    image: minio/minio:latest
+    volumes:
+      - minio_data:/data
+    secrets:
+      - minio-credentials
+    environment:
+      MINIO_CONFIG_ENV_FILE: /run/secrets/minio-credentials
+      MINIO_CONSOLE_ADDRESS: ":9001"
+      MINIO_BROWSER_REDIRECT_URL: "http://s3-console.unify.com"
+    command: server /data
+    networks:
+      - minio_network
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - minio
+    networks:
+      - minio_network
+
+volumes:
+  minio_data:
+
+secrets:
+  minio-credentials:
+    file: config/minio.env
+
+networks:
+  minio_network:
+    driver: bridge
+
