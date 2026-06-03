@@ -17,14 +17,16 @@ services:
     image: postgres:18-alpine
     volumes:
       - db_data:/var/lib/postgresql
-    secrets:
-      - db-pass
-      - db-user
+    env_file:
+      - secrets/pg.env
+    # secrets:
+    #   - db-pass
+    #   - db-user
     networks:
       - backend
-    environment:
-      POSTGRES_PASSWORD_FILE: /run/secrets/db-pass
-      POSTGRES_USER_FILE: /run/secrets/db-user
+    # environment:
+    #   POSTGRES_PASSWORD_FILE: /run/secrets/db-pass
+    #   POSTGRES_USER_FILE: /run/secrets/db-user
 
 
   nginx:
@@ -45,10 +47,10 @@ volumes:
 secrets:
   minio-credentials:
     file: secrets/minio.env
-  db-pass:
-    file: secrets/postgres-pass
-  db-user:
-    file: secrets/postgres-user
+  # db-pass:
+  #   file: secrets/postgres-pass
+  # db-user:
+  #   file: secrets/postgres-user
 
 networks:
   backend:

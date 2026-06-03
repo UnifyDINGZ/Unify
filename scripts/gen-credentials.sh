@@ -8,20 +8,19 @@ HERE=$(dirname $0)
 ROOT=$(realpath $HERE/..)
 SECRETS="$ROOT/secrets"
 
-PGUSER_FILE="$SECRETS/postgres-user"
-PGPASS_FILE="$SECRETS/postgres-pass"
+POSTGRES_FILE="$SECRETS/pg.env"
 MINIO_FILE="$SECRETS/minio.env"
 
 [[ ! -d "$SECRETS" ]] && mkdir "$SECRETS"
-if [[ ! -f "$PGPASS_FILE" ]]; then
-  echo Generating Postgres password...
-  gen_credential > "$PGPASS_FILE"
+if [[ ! -f "$POSTGRES_FILE" ]]; then
+  echo Generating Postgres credentials...
+  tee "$POSTGRES_FILE" > /dev/null <<EOF
+POSTGRES_USER=$(gen_credential)
+POSTGRES_PASSWORD=$(gen_credential)
+DATABASE_URL=postgresql+asyncpg://\$POSTGRES_USER:\$POSTGRES_PASSWORD@db/unify
+EOF
 fi
 
-if [[ ! -f "$PGUSER_FILE" ]]; then
-  echo Generating Postgres user...
-  gen_credential > "$PGUSER_FILE"
-fi
 
 if [[ ! -f "$MINIO_FILE" ]]; then
   echo Generating MinIO credentials...
