@@ -5,7 +5,7 @@ if [[ "$EUID" -ne 0 ]]; then
   exec sudo $0
 fi
 
-tee -a /etc/hosts > /dev/null << EOF 
+tee -a /etc/hosts > /dev/null << EOF
 127.0.0.1 storage.unify.com
 127.0.0.1 s3-console.unify.com
 127.0.0.1 api.unify.com
