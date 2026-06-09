@@ -44,7 +44,7 @@ services:
     develop:
       watch:
         - path: ./config/nginx.conf
-          action: sync+restart
+          action: restart
 
 volumes:
   minio_data:
