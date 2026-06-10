@@ -12,6 +12,13 @@ services:
       MINIO_CONSOLE_ADDRESS: ":9001"
       MINIO_BROWSER_REDIRECT_URL: "http://s3-console.unify.com"
     command: server /data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9001/"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+      start_interval: 1s
 
   db:
     image: postgres:18-alpine
@@ -29,12 +36,21 @@ services:
     # environment:
     #   POSTGRES_PASSWORD_FILE: /run/secrets/db-pass
     #   POSTGRES_USER_FILE: /run/secrets/db-user
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+      start_interval: 1s
 
   backend:
     build: backend/
     depends_on:
-      - s3
-      - db
+      s3:
+        condition: service_healthy
+      db:
+        condition: service_healthy
     networks:
       - backend
     env_file:
@@ -46,16 +62,27 @@ services:
       watch:
         - path: ./backend/src/
           action: rebuild
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/ping"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+      start_interval: 1s
+
 
   nginx:
     image: nginx:alpine
+    restart: unless-stopped
     ports:
       - "80:80"
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - s3
-      - backend
+      s3:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
     networks:
       - backend
     develop:
