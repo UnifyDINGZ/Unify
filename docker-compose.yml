@@ -37,6 +37,15 @@ services:
       - db
     networks:
       - backend
+    env_file:
+      - secrets/pg.env
+      - secrets/minio.env
+    environment:
+      UBD_S3_DOMAIN: storage.unify.com
+    develop:
+      watch:
+        - path: ./backend/src/
+          action: rebuild
 
   nginx:
     image: nginx:alpine

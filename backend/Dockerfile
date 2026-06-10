@@ -14,6 +14,7 @@ COPY --from=build /src/dist/*.whl .
 RUN --mount=type=cache,target=/root/.cache/pip \
   python -m pip install *.whl
 
+ENV PYTHONUNBUFFERED=1
 RUN adduser -D unifyd
 USER unifyd
 ENTRYPOINT [ "unify-backend" ]
