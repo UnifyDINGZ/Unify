@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - frontend/
+      - frontend/**
   workflow_dispatch:
 
 jobs:
@@ -30,4 +30,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
-          folder: dist
+          folder: frontend/dist # ✅ This tells the action exactly where to look
