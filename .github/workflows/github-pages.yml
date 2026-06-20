@@ -11,6 +11,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     defaults:
       run:
         working-directory: frontend/
@@ -30,4 +34,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
-          folder: frontend/dist # ✅ This tells the action exactly where to look
+          folder: frontend/dist
