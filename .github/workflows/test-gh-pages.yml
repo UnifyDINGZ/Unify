@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - master
-    paths:
-      - frontend/
 
 jobs:
   build:
@@ -17,8 +15,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Check for frontend changes
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+
       - name: Install dependencies
+        if: steps.filter.outputs.frontend == 'true'
         run: npm i
 
       - name: Build files
+        if: steps.filter.outputs.frontend == 'true'
         run: npm run build
