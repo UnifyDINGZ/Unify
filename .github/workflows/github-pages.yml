@@ -23,8 +23,8 @@ jobs:
       - name: Build files
         run: npm run build
 
-      - name: create .nojekyll
-        run: touch .output/public/.nojekyll
+      # - name: create .nojekyll
+      #   run: touch .output/public/.nojekyll
 
       - name: deploy pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
