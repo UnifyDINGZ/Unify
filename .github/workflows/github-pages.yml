@@ -26,8 +26,8 @@ jobs:
       # - name: create .nojekyll
       #   run: touch .output/public/.nojekyll
 
-      - name: deploy pages
+      - name: Deploy to GH Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
-          folder: .output/public
+          folder: dist
