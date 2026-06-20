@@ -1,0 +1,32 @@
+name: Deploy Product Page
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - frontend/
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/
+
+    steps:
+      - uses: actions@checkout@v3
+      - name: Install dependencies
+        run: npm i
+
+      - name: Build files
+        run: npm run build
+
+      - name: create .nojekyll
+        run: touch .output/public/.nojekyll
+
+      - name: deploy pages
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        with:
+          branch: gh-pages
+          folder: .output/public
