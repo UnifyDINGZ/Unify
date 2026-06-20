@@ -65,3 +65,4 @@ be investigated, as it is mostly the backend's job to handle files
 using this service. Frontend and co only need to receive pre-signed
 URLs that allow the end-user to put and fetch content, especially
 if the bucket is set to private
+
