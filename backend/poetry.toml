@@ -1,4 +1,4 @@
 virtualenvs.in-project = true
 virtualenvs.options.always-copy = false
 virtualenvs.prefer-active-python = true
-virtualenvs.options.no-pip = true
+virtualenvs.options.no-pip = false
