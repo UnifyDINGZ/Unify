@@ -210,7 +210,6 @@ export default function Section({ user }) {
             Here are your recommended actions for today.
           </p>
         </div>
-
         <div className="relative" ref={calendarRef}>
           <button
             onClick={() => setShowCalendar((v) => !v)}
