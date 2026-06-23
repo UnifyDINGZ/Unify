@@ -7,8 +7,9 @@ def init_auth():
     init(
         app_info=InputAppInfo(
             app_name="Pterano",
-            api_domain="api.pterano.com",
-            website_domain="pterano.com",
+            # TODO: Make this HTTPS soon
+            api_domain="http://api.pterano.com",
+            website_domain="http://pterano.com",
             api_base_path="/auth",
             website_base_path="/auth",
         ),
@@ -21,7 +22,7 @@ def init_auth():
         ),
         framework="fastapi",
         recipe_list=[
-            session.init(),
+            session.init(get_token_transfer_method=lambda *_: "cookie"),
             emailpassword.init(),
             dashboard.init(api_key=environ["DASHBOARD_API_KEYS"]),
         ],  # initializes session features
