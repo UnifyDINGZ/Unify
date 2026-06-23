@@ -4,4 +4,5 @@
 curl -X GET \
   -c .pterano-cookies  \
   -b .pterano-cookies \
-  http://api.pterano.com/restricted
+  http://api.pterano.com/restricted \
+ | jq .message

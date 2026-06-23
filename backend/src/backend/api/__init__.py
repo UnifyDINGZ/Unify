@@ -40,4 +40,4 @@ async def protected(
     """
     An example of a resource protected by SuperTokens
     """
-    return {"status": "authenticated", "session_id": session.get_user_id()}
+    return {"message": "authenticated", "session_id": session.get_user_id()}
