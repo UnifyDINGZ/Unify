@@ -4,6 +4,7 @@ import {
   Pencil,
   Clock,
   X,
+  Truck,
   Image as ImageIcon,
 } from "lucide-react";
 
@@ -31,7 +32,8 @@ const ACTIONS = [
   {
     id: "steel-delay",
     category: "saveMoney",
-    image: "",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9ooKBDHjx_nRYX0dd8lm_p1Xq87RrD5Amrg&s",
     title: "Delay Steel Bar purchase",
     subtitle: "Delay by 4 days",
     impact: { kind: "Save", amount: 8500 },
@@ -42,7 +44,8 @@ const ACTIONS = [
   {
     id: "paint-reduce",
     category: "reduceWaste",
-    image: "",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvwCDIbYX5weR9VQL_4IUgPfTG_hyJmYCBEA&s",
     title: "Reduce Paint (Glossy White)",
     subtitle: "Reduce next order by 20%",
     impact: { kind: "Save", amount: 17000 },
@@ -53,7 +56,8 @@ const ACTIONS = [
   {
     id: "supplier-switch",
     category: "costSaving",
-    image: "",
+    icon: Truck,
+    iconClass: "bg-emerald-500 text-white",
     title: "Switch to Supplier B",
     subtitle: "6% cheaper this week",
     impact: { kind: "Save", amount: 5200 },
@@ -77,14 +81,28 @@ function PriorityBadge({ category }) {
   );
 }
 
-function ProductThumb({ src, alt }) {
+function ProductThumb({ src, alt, Icon, iconClass }) {
+  if (src) {
+    return (
+      <div className="flex h-10 w-10 flex-none items-center justify-center overflow-hidden rounded-lg bg-slate-100">
+        <img src={src} alt={alt} className="h-full w-full object-cover" />
+      </div>
+    );
+  }
+
+  if (Icon) {
+    return (
+      <div
+        className={`flex h-10 w-10 flex-none items-center justify-center rounded-full ${iconClass}`}
+      >
+        <Icon size={20} />
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-10 w-10 flex-none items-center justify-center overflow-hidden rounded-lg bg-slate-100">
-      {src ? (
-        <img src={src} alt={alt} className="h-full w-full object-cover" />
-      ) : (
-        <ImageIcon size={18} className="text-slate-300" />
-      )}
+      <ImageIcon size={18} className="text-slate-300" />
     </div>
   );
 }
@@ -161,7 +179,12 @@ function ActionRow({ action, onApprove, onMenuSelect }) {
 
       <td className="px-6 py-5 align-top">
         <div className="flex items-center gap-3">
-          <ProductThumb src={action.image} alt={action.title} />
+          <ProductThumb
+            src={action.image}
+            alt={action.title}
+            Icon={action.icon}
+            iconClass={action.iconClass}
+          />
           <div className="leading-tight">
             <div className="text-sm font-semibold text-slate-800">
               {action.title}
