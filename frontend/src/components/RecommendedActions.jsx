@@ -235,61 +235,56 @@ function ActionRow({ action, onApprove, onMenuSelect }) {
 
 export default function RecommendedActionsPanel({
   actions = ACTIONS,
-  title = "Today's recommended actions",
   onApprove,
   onMenuSelect,
   onViewAll,
 }) {
   return (
     <>
-      <div className="w-full">
-        <header className="flex items-center justify-between px-6 pb-4 pt-5">
-          <h2 className="text-xl font-bold text-slate-800">{title}</h2>
-          <button
-            type="button"
-            onClick={onViewAll}
-            className="text-sm font-medium text-blue-600 hover:text-blue-700"
-          >
-            View all actions
-          </button>
-        </header>
-
-        <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left">
-              <thead>
-                <tr className="border-b border-slate-200 text-md font-semibold text-slate-500">
-                  <th scope="col" className="px-6 py-3 font-medium">
-                    Priority
-                  </th>
-                  <th scope="col" className="px-6 py-3 font-medium">
-                    Action
-                  </th>
-                  <th scope="col" className="px-6 py-3 font-medium">
-                    Impact
-                  </th>
-                  <th scope="col" className="px-6 py-3 font-medium">
-                    Reason
-                  </th>
-                  <th scope="col" className="px-6 py-3 font-medium">
-                    Recommended
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {actions.map((action) => (
-                  <ActionRow
-                    key={action.id}
-                    action={action}
-                    onApprove={onApprove}
-                    onMenuSelect={onMenuSelect}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+      <div className="flex justify-between">
+        <h2 className="text-lg font-semibold text-slate-800">
+          Today's recommended actions
+        </h2>
+        <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+          View all actions
+        </button>
       </div>
+
+      <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-left">
+            <thead>
+              <tr className="border-b border-slate-200 text-md font-semibold text-slate-500">
+                <th scope="col" className="px-6 py-3 font-medium">
+                  Priority
+                </th>
+                <th scope="col" className="px-6 py-3 font-medium">
+                  Action
+                </th>
+                <th scope="col" className="px-6 py-3 font-medium">
+                  Impact
+                </th>
+                <th scope="col" className="px-6 py-3 font-medium">
+                  Reason
+                </th>
+                <th scope="col" className="px-6 py-3 font-medium">
+                  Recommended
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {actions.map((action) => (
+                <ActionRow
+                  key={action.id}
+                  action={action}
+                  onApprove={onApprove}
+                  onMenuSelect={onMenuSelect}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </>
   );
 }
