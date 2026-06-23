@@ -3,6 +3,20 @@
 > [!IMPORTANT]
 > `docker compose` is required to run the server
 
+> [!WARNING]
+> As of writing, this repository requires you to override the
+> IP addresses of `pterano.com` from their *production* state
+> to a *development* override, which basically points everything
+> to localhost.
+>
+> Please do not forget to uninstall the domains when viewing
+> the *production* website:
+>
+> ```sh
+> $ ./scripts/uninstall-domains.sh
+> Domain Uninstall OK
+> ```
+
 First install the fake domains which NGINX is expecting:
 
 ```sh
@@ -19,10 +33,10 @@ Installed domains successfully
 > Windows with the following:
 >
 > ```hosts
-> 127.0.0.1 storage.unify.com
-> 127.0.0.1 s3-console.unify.com
-> 127.0.0.1 api.unify.com
-> 127.0.0.1 unify.com
+> 127.0.0.1 storage.pterano.com
+> 127.0.0.1 s3-console.pterano.com
+> 127.0.0.1 api.pterano.com
+> 127.0.0.1 pterano.com
 > ```
 
 Next, generate random credentials
@@ -52,10 +66,10 @@ Attaching to backend-1, db-1, nginx-1, s3-1
 Once started, heading over to either one of these
 domains will show you various things:
 
-* `s3-console.unify.com`: S3 Storage Console. Credentials
+* `s3-console.pterano.com`: S3 Storage Console. Credentials
   can be found in `secrets/minio.env`
-* `api.unify.com`: Backend API. Docs are at
-  [`api.unify.com/docs`](http://api.unify.com/docs)
+* `api.pterano.com`: Backend API. Docs are at
+  [`api.pterano.com/docs`](http://api.pterano.com/docs)
 
 ## MinIO: S3-compatible self-hosted storage service
 
