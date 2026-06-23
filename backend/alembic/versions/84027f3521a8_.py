@@ -1,4 +1,4 @@
-"""empty message
+"""Initial Table
 
 Revision ID: 84027f3521a8
 Revises: 
