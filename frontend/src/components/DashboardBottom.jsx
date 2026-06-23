@@ -50,7 +50,7 @@ function Stat({
   );
 }
 
-export default function PteranoDashboardBottom() {
+export default function DashboardBottom() {
   const [question, setQuestion] = useState("");
 
   const handleAsk = () => {

@@ -8,7 +8,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import RecommendedActions from "./RecommendedActions";
-import PteranoDashboardBottom from "./PteranoDashboardBottom";
+import DashboardBottom from "./DashboardBottom";
 
 const cards = [
   {
@@ -233,7 +233,7 @@ export default function Section({ user }) {
 
       <RecommendedActions />
 
-      <PteranoDashboardBottom />
+      <DashboardBottom />
     </div>
   );
 }
