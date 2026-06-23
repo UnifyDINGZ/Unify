@@ -46,6 +46,8 @@ if [[ ! -f "$AUTH_FILE" ]]; then
   tee "$AUTH_FILE" > /dev/null <<EOF
 POSTGRESQL_HOST=db
 POSTGRESQL_DATABASE_NAME=auth
+API_KEYS=$(gen_credential)
+DASHBOARD_API_KEYS=$(gen_credential)
 EOF
 fi
 

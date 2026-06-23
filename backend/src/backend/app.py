@@ -1,6 +1,7 @@
 from uvicorn import run
 from os import getenv
 from backend.config import config_from_env
+from backend.auth import init_auth
 
 
 def main():
@@ -10,6 +11,7 @@ def main():
     # print(package_meta.json)
 
     # print(config_from_env())
+    init_auth()
 
     is_dev = getenv("UBD_DEV", "") == "true"
     run(
