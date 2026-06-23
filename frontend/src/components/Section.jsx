@@ -8,6 +8,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import RecommendedActions from "./RecommendedActions";
+import PteranoDashboardBottom from "./PteranoDashboardBottom";
 
 const cards = [
   {
@@ -231,6 +232,8 @@ export default function Section({ user }) {
       <MetricCards />
 
       <RecommendedActions />
+
+      <PteranoDashboardBottom />
     </div>
   );
 }
