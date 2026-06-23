@@ -76,6 +76,7 @@ services:
     env_file:
       - secrets/pg.env
       - secrets/minio.env
+      - secrets/auth.env
     environment:
       UBD_S3_DOMAIN: storage.pterano.com
     develop:
