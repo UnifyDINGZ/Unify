@@ -6,10 +6,10 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 tee -a /etc/hosts > /dev/null << EOF
-127.0.0.1 storage.unify.com
-127.0.0.1 s3-console.unify.com
-127.0.0.1 api.unify.com
-127.0.0.1 unify.com
+127.0.0.1 storage.pterano.com
+127.0.0.1 s3-console.pterano.com
+127.0.0.1 api.pterano.com
+127.0.0.1 pterano.com
 EOF
 
 echo Installed domains successfully
