@@ -23,7 +23,8 @@ services:
   db:
     image: postgres:18-alpine
     volumes:
-      - db_data:/var/lib/postgresql
+      - db_data:/var/lib/postgresql:rw
+      - ./config/pg:/docker-entrypoint-initdb.d:ro
     env_file:
       - secrets/pg.env
     ports:
@@ -77,7 +78,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       s3:
         condition: service_healthy
@@ -87,7 +88,7 @@ services:
       - backend
     develop:
       watch:
-        - path: ./config/nginx.conf
+        - path: ./config/nginx/
           action: restart
 
 volumes:
