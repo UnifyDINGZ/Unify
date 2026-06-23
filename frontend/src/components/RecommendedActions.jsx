@@ -18,7 +18,7 @@ const ACTIONS = [
   {
     id: "cement-reorder",
     category: "urgent",
-    image: "https://ph.all.biz/img/ph/catalog/20183.jpeg", // <-- paste image URL here
+    image: "https://ph.all.biz/img/ph/catalog/20183.jpeg",
     title: "Reorder Portland Cement",
     subtitle: "Stockout risk in 2 days",
     subtitleEmphasis: "2 days",
@@ -31,7 +31,7 @@ const ACTIONS = [
   {
     id: "steel-delay",
     category: "saveMoney",
-    image: "", // <-- paste image URL here
+    image: "",
     title: "Delay Steel Bar purchase",
     subtitle: "Delay by 4 days",
     impact: { kind: "Save", amount: 8500 },
@@ -42,7 +42,7 @@ const ACTIONS = [
   {
     id: "paint-reduce",
     category: "reduceWaste",
-    image: "", // <-- paste image URL here
+    image: "",
     title: "Reduce Paint (Glossy White)",
     subtitle: "Reduce next order by 20%",
     impact: { kind: "Save", amount: 17000 },
@@ -53,7 +53,7 @@ const ACTIONS = [
   {
     id: "supplier-switch",
     category: "costSaving",
-    image: "", // <-- paste image URL here
+    image: "",
     title: "Switch to Supplier B",
     subtitle: "6% cheaper this week",
     impact: { kind: "Save", amount: 5200 },
