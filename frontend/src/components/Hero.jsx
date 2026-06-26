@@ -5,7 +5,7 @@ const notifications = [
     {
         id: 1,
         name: "Drake Delos Reyes",
-        avatar: "MS",
+        avatar: "D",
         avatarBg: "bg-purple-100",
         avatarColor: "text-purple-600",
         message: "Submitted a new purchase order for review.",
@@ -15,7 +15,7 @@ const notifications = [
     {
         id: 2,
         name: "Gabriel",
-        avatar: "JD",
+        avatar: "G",
         avatarBg: "bg-blue-100",
         avatarColor: "text-blue-600",
         message: "Flagged supplier #0042 for urgent attention.",
@@ -25,7 +25,7 @@ const notifications = [
     {
         id: 3,
         name: "Nimrod",
-        avatar: "AR",
+        avatar: "N",
         avatarBg: "bg-green-100",
         avatarColor: "text-green-600",
         message: "Approved the Q3 budget allocation.",
@@ -35,7 +35,7 @@ const notifications = [
     {
         id: 4,
         name: "Ivan",
-        avatar: "SY",
+        avatar: "I",
         avatarBg: "bg-gray-100",
         avatarColor: "text-gray-500",
         message: "Your monthly savings report is ready to view.",
